@@ -5,6 +5,24 @@ Version: 1.6.7
 Date: 2012-07-14
 Author: B. W. Lewis
 Maintainer: B. W. Lewis <blewis@illposed.net>
-Description: An R client for the Redis persistent key-value database available from http://redis.io.
+Description: An R client for the Redis persistent key-value database available
+    from http://redis.io.
+Depends:
+    Rcpp(>= 0.10)
+LinkingTo: Rcpp
+RcppModules: hiredis
 License: Apache License 2.0
 LazyLoad: yes
+Collate:
+    'allValCMD.R'
+    'bitops.R'
+    'controlCMD.R'
+    'hashCMD.R'
+    'listCMD.R'
+    'pubsub.R'
+    'redis-internal.R'
+    'scriptCMD.R'
+    'setVal.R'
+    'strValCMD.R'
+    'zsetVal.R'
+    'zzz.R'
