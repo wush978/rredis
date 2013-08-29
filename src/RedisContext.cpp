@@ -1,7 +1,7 @@
 #include <Rcpp.h>
 #include "RedisContext.hpp"
 
-RredisContext::RredisContext(std::string host, int port, int timeout, std::string password) 
+RredisContext::RredisContext(std::string host, int port, int timeout) 
 : c(redisConnect(host.c_str(), port)) {
 	if (c != NULL && c->err) {
 		std::stringstream ss;
@@ -39,7 +39,7 @@ RCPP_EXPOSED_CLASS(RredisContext)
 
 RCPP_MODULE(hiredis) {
 	class_<RredisContext>("redisContext")
-	.constructor<std::string, int, int, std::string>()
+	.constructor<std::string, int, int>()
 	.property("err", &RredisContext::get_err)
 	.property("errstr", &RredisContext::get_errstr)
 	.property("fd", &RredisContext::get_fd)

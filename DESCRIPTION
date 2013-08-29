@@ -8,6 +8,7 @@ Maintainer: B. W. Lewis <blewis@illposed.net>
 Description: An R client for the Redis persistent key-value database available
     from http://redis.io.
 Depends:
+    methods,
     Rcpp(>= 0.10)
 LinkingTo: Rcpp
 RcppModules: hiredis
@@ -26,3 +27,6 @@ Collate:
     'strValCMD.R'
     'zsetVal.R'
     'zzz.R'
+    'connection.R'
+    'redisCmd.R'
+    'RcppExports.R'

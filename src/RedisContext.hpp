@@ -7,7 +7,7 @@
 class RredisContext {
 	redisContext* c;
 public:
-	RredisContext(std::string host, int port, int timeout, std::string password);
+	RredisContext(std::string host, int port, int timeout);
 	~RredisContext();
 
 	redisContext* get_ptr();
