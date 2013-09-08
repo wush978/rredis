@@ -30,3 +30,4 @@ Collate:
     'connection.R'
     'redisCmd.R'
     'RcppExports.R'
+    'redisGetResponse.R'

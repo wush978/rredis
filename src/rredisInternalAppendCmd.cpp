@@ -1,4 +1,3 @@
-#include <memory>
 #include <Rcpp.h>
 #include "RedisContext.hpp"
 #include "extract.hpp"

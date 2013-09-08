@@ -37,3 +37,18 @@ BEGIN_RCPP
     return __sexp_result;
 END_RCPP
 }
+// rredisInternalResponse
+SEXP rredisInternalResponse(RObject Rc);
+RcppExport SEXP rredis_rredisInternalResponse(SEXP RcSEXP) {
+BEGIN_RCPP
+    SEXP __sexp_result;
+    {
+        Rcpp::RNGScope __rngScope;
+        RObject Rc = Rcpp::as<RObject >(RcSEXP);
+        SEXP __result = rredisInternalResponse(Rc);
+        PROTECT(__sexp_result = Rcpp::wrap(__result));
+    }
+    UNPROTECT(1);
+    return __sexp_result;
+END_RCPP
+}

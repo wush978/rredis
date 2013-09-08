@@ -9,3 +9,7 @@ rredisInternalCmd <- function(Rc, Rargv) {
     .Call('rredis_rredisInternalCmd', PACKAGE = 'rredis', Rc, Rargv)
 }
 
+rredisInternalResponse <- function(Rc) {
+    .Call('rredis_rredisInternalResponse', PACKAGE = 'rredis', Rc)
+}
+
