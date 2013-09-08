@@ -5,6 +5,22 @@
 
 using namespace Rcpp;
 
+// rredisInternalAppendCmd
+SEXP rredisInternalAppendCmd(RObject Rc, List Rargv);
+RcppExport SEXP rredis_rredisInternalAppendCmd(SEXP RcSEXP, SEXP RargvSEXP) {
+BEGIN_RCPP
+    SEXP __sexp_result;
+    {
+        Rcpp::RNGScope __rngScope;
+        RObject Rc = Rcpp::as<RObject >(RcSEXP);
+        List Rargv = Rcpp::as<List >(RargvSEXP);
+        SEXP __result = rredisInternalAppendCmd(Rc, Rargv);
+        PROTECT(__sexp_result = Rcpp::wrap(__result));
+    }
+    UNPROTECT(1);
+    return __sexp_result;
+END_RCPP
+}
 // rredisInternalCmd
 SEXP rredisInternalCmd(RObject Rc, List Rargv);
 RcppExport SEXP rredis_rredisInternalCmd(SEXP RcSEXP, SEXP RargvSEXP) {

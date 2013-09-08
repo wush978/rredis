@@ -33,28 +33,29 @@
 			if(!is.raw(v)) v <- .cerealize(v)
 			cmdarg[[j]] <- v
 		}
-	result.raw <- rredisInternalCmd(con, cmdarg)
-# 	browser()
-	if (class(result.raw) == "raw") {
-		result <- try(unserialize(result.raw), silent=TRUE)
-		if (class(result) == "try-error") {
-			result <- rawToChar(result.raw)
-			return(result)
+	block <- TRUE
+	if(exists('block',envir=env)) block <- get('block',envir=env)
+	if(block) {
+		result.raw <- rredisInternalCmd(con, cmdarg)
+	# 	browser()
+		if (class(result.raw) == "raw") {
+			result <- try(unserialize(result.raw), silent=TRUE)
+			if (class(result) == "try-error") {
+				result <- rawToChar(result.raw)
+				return(result)
+			} else {
+				return(result)
+			}
 		} else {
-			return(result)
+			return(result.raw)
 		}
-	} else {
-		return(result.raw)
+	} else { # non-blocking
+# 		browser()
+		rredisInternalAppendCmd(con, cmdarg)
+		tryCatch(
+			env$count <- env$count + 1,
+			error = function(e) assign('count', 1, envir=env)
+		)
+		invisible()
 	}
-	
-	# need to implement non-blocking in C
-# 	block <- TRUE
-# 	if(exists('block',envir=env)) block <- get('block',envir=env)
-# 	if(block)
-# 		return(result)
-# 	tryCatch(
-# 		env$count <- env$count + 1,
-# 		error = function(e) assign('count', 1, envir=env)
-# 	)
-	invisible()
 }
